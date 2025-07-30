@@ -28,7 +28,16 @@ guesses = []
 
 while len(guesses) < 50:
     ans = screen.textinput(title=f"{len(guesses)}/50 States correct", prompt="What's another state's name?").title()
-    ans = ans.title()
+    if ans == 'Exit':
+        miss = []
+        for st in states:
+            if st not in guesses:
+                miss.append(st)
+        new_dt = pd.DataFrame(miss)
+        new_dt.to_csv("missing_states.csv")
+        break
+
+
     if ans in states and ans not in guesses:
         t = turtle.Turtle()
         t.hideturtle()
