@@ -37,4 +37,3 @@ while len(guesses) < 50:
         state_dt = dt[dt.state == ans]
         t.goto(int(state_dt.x.item()), int(state_dt.y.item()))
         t.write(ans)
-# ans = ans.title()
