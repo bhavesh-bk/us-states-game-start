@@ -25,14 +25,14 @@ state_dt = dt[dt.state == states]
 # t.write(ans)
 
 guesses = []
-
+miss = []
 while len(guesses) < 50:
     ans = screen.textinput(title=f"{len(guesses)}/50 States correct", prompt="What's another state's name?").title()
     if ans == 'Exit':
-        miss = []
-        for st in states:
-            if st not in guesses:
-                miss.append(st)
+        miss = [st for st in states if st not in guesses]
+
+
+
         new_dt = pd.DataFrame(miss)
         new_dt.to_csv("missing_states.csv")
         break
